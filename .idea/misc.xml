@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Reeta Thakur/AndroidStudioProjects/TriveousCryptoCurrencyAssignment/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Reeta Thakur/AndroidStudioProjects/TriveousCryptoCurrencyAssignment/app/src/main/res/layout/fragment_all_crypto_currency.xml" value="0.1" />
+        <entry key="..\:/Users/Reeta Thakur/AndroidStudioProjects/TriveousCryptoCurrencyAssignment/app/src/main/res/layout/currency_item_layout.xml" value="0.16" />
+        <entry key="..\:/Users/Reeta Thakur/AndroidStudioProjects/TriveousCryptoCurrencyAssignment/app/src/main/res/layout/fragment_all_crypto_currency.xml" value="0.12" />
         <entry key="..\:/Users/Reeta Thakur/AndroidStudioProjects/TriveousCryptoCurrencyAssignment/app/src/main/res/layout/fragment_favorites.xml" value="0.1" />
       </map>
     </option>

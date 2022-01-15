@@ -1,10 +1,12 @@
-package com.reeta.triveouscryptocurrencyassignment
+package com.reeta.triveouscryptocurrencyassignment.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.reeta.triveouscryptocurrencyassignment.R
+import com.reeta.triveouscryptocurrencyassignment.adapter.PagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setAdapter() {
-        val pagerAdapter=PagerAdapter(supportFragmentManager,lifecycle)
+        val pagerAdapter= PagerAdapter(supportFragmentManager,lifecycle)
         viewPager2.adapter=pagerAdapter
         TabLayoutMediator(tab, viewPager2) { tab, position ->
             if (position==0) tab.text="All CryptoCurrency"

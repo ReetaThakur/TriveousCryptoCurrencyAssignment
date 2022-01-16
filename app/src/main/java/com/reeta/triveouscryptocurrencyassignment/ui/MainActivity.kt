@@ -7,7 +7,9 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reeta.triveouscryptocurrencyassignment.R
 import com.reeta.triveouscryptocurrencyassignment.adapter.PagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     lateinit var tab: TabLayout
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.title="Currency Search"
         tab=findViewById(R.id.tabAll)
         viewPager2=findViewById(R.id.viewPager)
         setAdapter()

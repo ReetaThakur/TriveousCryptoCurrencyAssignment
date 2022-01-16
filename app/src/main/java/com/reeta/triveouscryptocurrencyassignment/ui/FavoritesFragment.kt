@@ -22,6 +22,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
+/*
+This Fragment will show all favorites crypto currencies that you add into first fragment
+and if you want to remove those currency you can do it.
+ */
 class FavoritesFragment : Fragment(R.layout.fragment_favorites), RemoveFromFavorites {
 
     lateinit var favoriteAdapter: FavoriteAdapter
@@ -40,6 +44,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites), RemoveFromFavor
         favoriteList = ArrayList()
         setRecyclerView()
 
+        // here we are observing data
         viewModel.getCurrencyData().observe(viewLifecycleOwner, {
             favoriteAdapter.setListData(ArrayList(it))
             favoriteAdapter.notifyDataSetChanged()
@@ -47,6 +52,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites), RemoveFromFavor
 
     }
 
+    //setting recylcerView
     private fun setRecyclerView() {
         favoriteAdapter = FavoriteAdapter(favoriteList, this)
         val linearLayoutManager = LinearLayoutManager(context)
@@ -56,6 +62,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites), RemoveFromFavor
         }
     }
 
+    // this method will remove that particular crypto currency from database
     override fun removeCurrency(currency: AddCurrency) {
         val builder = context?.let { androidx.appcompat.app.AlertDialog.Builder(it) }
         builder?.setTitle("Delete")

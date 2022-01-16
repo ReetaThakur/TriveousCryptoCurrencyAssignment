@@ -3,6 +3,9 @@ package com.reeta.triveouscryptocurrencyassignment.apiResponse
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
+/* This is like a gneric class that will handle different types of result that our api will
+give.
+*/
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
 
     enum class Status {

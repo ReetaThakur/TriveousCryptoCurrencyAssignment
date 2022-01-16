@@ -11,6 +11,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/*
+Repository is like a medium between data and viewModel, Repository will fetch data from
+database or server and give data to our viewModel.
+ */
 class Repository @Inject constructor(private val currencyDao: CurrencyDao) {
 
     private val responseHandler: ResponseHandler = ResponseHandler()
@@ -25,7 +29,7 @@ class Repository @Inject constructor(private val currencyDao: CurrencyDao) {
         }
     }
 
-    fun insertDataInDb(currecy:AddCurrency) {
+    fun insertDataInDb(currecy: AddCurrency) {
         CoroutineScope(Dispatchers.IO).launch {
             currencyDao.insertCurrency(currecy)
         }
@@ -35,10 +39,9 @@ class Repository @Inject constructor(private val currencyDao: CurrencyDao) {
         return currencyDao.getAllCurrency()
     }
 
-    fun deleteCurrency(currecy: AddCurrency){
+    fun deleteCurrency(currecy: AddCurrency) {
         currencyDao.deleteCurrency(currecy)
     }
-
 
 
 }

@@ -13,6 +13,9 @@ import com.reeta.triveouscryptocurrencyassignment.R
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
+/*
+This activity use for Sign in purpose by firebase
+ */
 class SignInActivity : AppCompatActivity() {
 
     lateinit var edtEmail: TextInputEditText
@@ -21,20 +24,21 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-        supportActionBar?.title="SignIn"
-        edtEmail=findViewById(R.id.signinemail)
-        edtPassword=findViewById(R.id.singinpassword)
+        supportActionBar?.title = "SignIn"
+        edtEmail = findViewById(R.id.signinemail)
+        edtPassword = findViewById(R.id.singinpassword)
         mAuth = FirebaseAuth.getInstance()
 
         btnSignIn.setOnClickListener {
-            singinProgressBar.visibility= View.VISIBLE
-            var email=edtEmail.editableText.toString()
-            var password=edtPassword.editableText.toString()
-            if (email.isEmpty() || password.isEmpty()){
-                singinProgressBar.visibility= View.INVISIBLE
-                Toast.makeText(this@SignInActivity, "Please Enter valid email and password", Toast.LENGTH_LONG
+            singinProgressBar.visibility = View.VISIBLE
+            var email = edtEmail.editableText.toString()
+            var password = edtPassword.editableText.toString()
+            if (email.isEmpty() || password.isEmpty()) {
+                singinProgressBar.visibility = View.INVISIBLE
+                Toast.makeText(
+                    this@SignInActivity, "Please Enter valid email and password", Toast.LENGTH_LONG
                 ).show()
-            }else {
+            } else {
                 mAuth!!.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this@SignInActivity,
                         OnCompleteListener<AuthResult?> { task ->

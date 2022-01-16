@@ -5,8 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [AddCurrency::class],version = 1)
-abstract class RoomDatabaseCurrency: RoomDatabase() {
+/*
+This class is like a medium to communicate with SQLite database, bcz room database also use
+SQLite database intenally.
+This is database class that will extends RoomDatabase() class,we can only create one object
+and use anywhere.
+ */
+@Database(entities = [AddCurrency::class], version = 1)
+abstract class RoomDatabaseCurrency : RoomDatabase() {
 
     abstract fun getDao(): CurrencyDao
 

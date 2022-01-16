@@ -11,8 +11,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
+/*
+This is viewModel, our main data logic will here, so if any case our activity re-create
+in this case our data will not loss, viewModel will communicate with repository for taking
+the data and give that data to our activity.
+
+All these things like viewModel, Repository provides one type of structure for our app.
+ */
 @HiltViewModel
-class CurrencyViewModel @Inject constructor(val repository: Repository):ViewModel() {
+class CurrencyViewModel @Inject constructor(val repository: Repository) : ViewModel() {
 
     fun getDataFromAPI(): LiveData<Resource<ResponseDTO>> {
         return liveData(Dispatchers.IO) {
@@ -29,7 +36,7 @@ class CurrencyViewModel @Inject constructor(val repository: Repository):ViewMode
         repository.deleteCurrency(currency)
     }
 
-    fun getCurrencyData():LiveData<List<AddCurrency>> {
-       return repository.getCurrencyFromDb()
+    fun getCurrencyData(): LiveData<List<AddCurrency>> {
+        return repository.getCurrencyFromDb()
     }
 }

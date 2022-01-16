@@ -15,6 +15,7 @@ class PagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):
         return 2
     }
 
+    //This method will return fragment as we swip or tab on to fragments
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return AllCryptoCurrencyFragment()

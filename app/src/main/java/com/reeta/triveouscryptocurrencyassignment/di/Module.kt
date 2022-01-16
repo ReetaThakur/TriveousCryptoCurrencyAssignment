@@ -15,6 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+/*
+This is a Module class that will provides all dependecies we required.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object Module {
@@ -47,6 +50,6 @@ object Module {
 }
 
 object Constants {
-    const  val BASE_URL="https://pro-api.coinmarketcap.com/"
-    const val api_key="326ad57d-203b-4066-8a1b-7280c22ffecc"
+    const val BASE_URL = "https://pro-api.coinmarketcap.com/"
+    const val api_key = "326ad57d-203b-4066-8a1b-7280c22ffecc"
 }

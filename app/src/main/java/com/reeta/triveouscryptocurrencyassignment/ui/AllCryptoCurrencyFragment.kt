@@ -23,12 +23,16 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_all_crypto_currency.*
 import java.text.DecimalFormat
 
+/*
+This Fragment will show all different types of crypto currencies and if you want to
+search your favorite crypto currency you can search it.
+ */
 @AndroidEntryPoint
 class AllCryptoCurrencyFragment : Fragment(R.layout.fragment_all_crypto_currency), AddToFavorites {
 
     var currencyList = mutableListOf<Data>()
     lateinit var currencyAdapter: CryptoAdapter
-     val viewModel: CurrencyViewModel by viewModels()
+    val viewModel: CurrencyViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,10 +52,12 @@ class AllCryptoCurrencyFragment : Fragment(R.layout.fragment_all_crypto_currency
         })
     }
 
+    //This use use for formatting our price only 2 decimal places.
     companion object {
         var decimal: DecimalFormat = DecimalFormat("#.##")
     }
 
+    // This use for desired search result
     private fun filterCurrency(currency: String) {
         val filterList = ArrayList<Data>()
         for (data in currencyList) {
@@ -67,6 +73,9 @@ class AllCryptoCurrencyFragment : Fragment(R.layout.fragment_all_crypto_currency
         }
     }
 
+    /*here our data will observe by observer and if it will successful then add all desired
+      to our currencyList for showing into screen
+     */
     private fun setData() {
         progressBar.visibility = View.VISIBLE
         viewModel.getDataFromAPI().observe(viewLifecycleOwner, {
@@ -88,6 +97,7 @@ class AllCryptoCurrencyFragment : Fragment(R.layout.fragment_all_crypto_currency
         })
     }
 
+    //here we are setting recycler view
     private fun setRecyclerView() {
         currencyAdapter = CryptoAdapter(currencyList, this)
         val linearLayoutManager = LinearLayoutManager(context)
@@ -97,6 +107,7 @@ class AllCryptoCurrencyFragment : Fragment(R.layout.fragment_all_crypto_currency
         }
     }
 
+    // this method will add our favorite crypto currency into database
     override fun addToFavorites(data: Data) {
         var currency = AddCurrency(data.name, data.symbol, decimal.format(data.quote.USD.price))
         viewModel.insertCurrencyData(currency)

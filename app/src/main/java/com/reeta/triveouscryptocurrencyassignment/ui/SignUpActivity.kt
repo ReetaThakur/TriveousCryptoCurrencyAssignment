@@ -56,7 +56,7 @@ class SignUpActivity : AppCompatActivity() {
                                 startActivity(intent)
 
                             } else {
-
+                                profileProgressBar.visibility = View.INVISIBLE
                                 Toast.makeText(
                                     this@SignUpActivity,
                                     "Authentication Failed",

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "649460996834",
+    "project_id": "cryptocurrencyauthentication",
+    "storage_bucket": "cryptocurrencyauthentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649460996834:android:d25239aa8bd4dcb0ba5cbb",
+        "android_client_info": {
+          "package_name": "com.reeta.triveouscryptocurrencyassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649460996834-6dt8vo6vvsq9gn89pomtlp0n6prui5e4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnuVuh6iIf360KMEHtR-mNL-8-XtM_YCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649460996834-6dt8vo6vvsq9gn89pomtlp0n6prui5e4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

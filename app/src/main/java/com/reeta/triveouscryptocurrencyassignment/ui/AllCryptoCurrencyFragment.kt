@@ -66,8 +66,7 @@ class AllCryptoCurrencyFragment : Fragment(R.layout.fragment_all_crypto_currency
             }
         }
         if (filterList.isEmpty()) {
-            Toast.makeText(context, "No currency found for searched query", Toast.LENGTH_LONG)
-                .show()
+
         } else {
             currencyAdapter.filterList(filterList)
         }

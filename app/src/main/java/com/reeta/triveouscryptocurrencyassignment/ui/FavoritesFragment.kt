@@ -1,6 +1,8 @@
 package com.reeta.triveouscryptocurrencyassignment.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,6 +14,7 @@ import com.reeta.triveouscryptocurrencyassignment.adapter.FavoriteAdapter
 import com.reeta.triveouscryptocurrencyassignment.database.AddCurrency
 import com.reeta.triveouscryptocurrencyassignment.database.CurrencyDao
 import com.reeta.triveouscryptocurrencyassignment.database.RoomDatabaseCurrency
+import com.reeta.triveouscryptocurrencyassignment.di.Module
 import com.reeta.triveouscryptocurrencyassignment.repository.Repository
 import com.reeta.triveouscryptocurrencyassignment.viewModel.CurrencyViewModel
 import com.reeta.triveouscryptocurrencyassignment.viewModel.ViewModelFactory
@@ -30,9 +33,10 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites), RemoveFromFavor
 
     lateinit var favoriteAdapter: FavoriteAdapter
     lateinit var viewModel: CurrencyViewModel
-    lateinit var favoriteList: ArrayList<AddCurrency>
+    var favoriteList = ArrayList<AddCurrency>()
     lateinit var repository: Repository
     lateinit var currecyDao: CurrencyDao
+    lateinit var database:RoomDatabaseCurrency
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,16 +45,24 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites), RemoveFromFavor
         viewModel = ViewModelProviders.of(this, ViewModelFactory(repository))
             .get(CurrencyViewModel::class.java)
 
-        favoriteList = ArrayList()
-        setRecyclerView()
-
         // here we are observing data
-        viewModel.getCurrencyData().observe(viewLifecycleOwner, {
-            favoriteAdapter.setListData(ArrayList(it))
-            favoriteAdapter.notifyDataSetChanged()
-        })
+
+        btnfetchData.setOnClickListener {
+            setData()
+        }
 
     }
+
+   @SuppressLint("NotifyDataSetChanged")
+   fun setData(){
+       viewModel.getCurrencyData()?.observe(viewLifecycleOwner, {
+           favoriteList.clear()
+           favoriteList.addAll(it)
+           setRecyclerView()
+           favoriteAdapter.notifyDataSetChanged()
+
+       })
+   }
 
     //setting recylcerView
     private fun setRecyclerView() {

@@ -1,6 +1,7 @@
 package com.reeta.triveouscryptocurrencyassignment.viewModel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.reeta.triveouscryptocurrencyassignment.apiResponse.Resource
@@ -36,7 +37,9 @@ class CurrencyViewModel @Inject constructor(val repository: Repository) : ViewMo
         repository.deleteCurrency(currency)
     }
 
-    fun getCurrencyData(): LiveData<List<AddCurrency>> {
+    fun getCurrencyData(): LiveData<List<AddCurrency>>? {
         return repository.getCurrencyFromDb()
     }
+
+
 }

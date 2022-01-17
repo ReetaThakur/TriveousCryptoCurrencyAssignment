@@ -1,10 +1,13 @@
 package com.reeta.triveouscryptocurrencyassignment.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.MutableLiveData
+import androidx.room.*
+import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.Update
+
+
+
 
 /*
 This is an interface that will map our sql queries to particular functions. so we can directly
@@ -15,11 +18,12 @@ Dao- data access object.
 interface CurrencyDao {
 
     @Query("select * from currencyTable")
-    fun getAllCurrency(): LiveData<List<AddCurrency>>
+    fun getAllCurrency(): LiveData<List<AddCurrency>>?
 
     @Insert
     fun insertCurrency(currency: AddCurrency)
 
     @Delete
     fun deleteCurrency(currency: AddCurrency)
+
 }

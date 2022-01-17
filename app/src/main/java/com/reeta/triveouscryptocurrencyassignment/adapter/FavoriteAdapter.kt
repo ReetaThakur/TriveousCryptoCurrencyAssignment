@@ -19,10 +19,6 @@ class FavoriteAdapter(
     var removeCurrency: RemoveFromFavorites
 ) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
-    fun setListData(currency: List<AddCurrency>) {
-        this.favoriteList = currency
-    }
-
     // onCreateViewHolder use for creating the view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val view =

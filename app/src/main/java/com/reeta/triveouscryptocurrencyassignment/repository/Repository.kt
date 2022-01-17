@@ -1,6 +1,7 @@
 package com.reeta.triveouscryptocurrencyassignment.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.reeta.triveouscryptocurrencyassignment.apiResponse.*
 import com.reeta.triveouscryptocurrencyassignment.database.AddCurrency
 import com.reeta.triveouscryptocurrencyassignment.database.CurrencyDao
@@ -35,7 +36,7 @@ class Repository @Inject constructor(private val currencyDao: CurrencyDao) {
         }
     }
 
-    fun getCurrencyFromDb(): LiveData<List<AddCurrency>> {
+    fun getCurrencyFromDb(): LiveData<List<AddCurrency>>? {
         return currencyDao.getAllCurrency()
     }
 

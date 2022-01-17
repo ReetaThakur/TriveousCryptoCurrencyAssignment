@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.reeta.triveouscryptocurrencyassignment.R
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -57,6 +58,18 @@ class SignInActivity : AppCompatActivity() {
                             }
                         })
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        var user: FirebaseUser? =mAuth?.currentUser
+        if (user!=null){
+            startActivity(Intent(this,MainActivity::class.java))
+            Toast.makeText(this,"User already Login",Toast.LENGTH_SHORT).show()
+            finish()
+        }else{
+            Toast.makeText(this,"First Login",Toast.LENGTH_LONG).show()
         }
     }
 }
